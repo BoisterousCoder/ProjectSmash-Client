@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 8f469e8aa54066543aeabc18d8827848
+timeCreated: 1520525769
+licenseType: Free
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Attentica 4F
+  fontNames:
+  - Attentica 4F
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

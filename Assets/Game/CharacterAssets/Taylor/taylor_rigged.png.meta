@@ -1,0 +1,307 @@
+fileFormatVersion: 2
+guid: 089baf0d96a78214390c568547eb4ded
+timeCreated: 1519399839
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: cloak
+    21300002: head
+    21300004: back_hand
+    21300006: front_hand
+    21300008: back_bicep
+    21300010: front_forearm
+    21300012: front_thigh
+    21300014: back_forearm
+    21300016: front_bicep
+    21300018: back_leg
+    21300020: back_thigh
+    21300022: front_shin
+    21300024: torso_front
+    21300026: front_foot
+    21300028: back_foot
+  serializedVersion: 4
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -1
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Standalone
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: cloak
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2405
+        width: 1644
+        height: 1337
+      alignment: 9
+      pivot: {x: 0.8430728, y: 0.92996085}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: head
+      rect:
+        serializedVersion: 2
+        x: 1701
+        y: 2975
+        width: 546
+        height: 650
+      alignment: 9
+      pivot: {x: 0.31459153, y: 0.12176683}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: back_hand
+      rect:
+        serializedVersion: 2
+        x: 2656
+        y: 3407
+        width: 246
+        height: 216
+      alignment: 9
+      pivot: {x: 0.33833227, y: 0.14849627}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: front_hand
+      rect:
+        serializedVersion: 2
+        x: 3607
+        y: 3261
+        width: 321
+        height: 458
+      alignment: 9
+      pivot: {x: 0.26347414, y: 0.113193296}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: back_bicep
+      rect:
+        serializedVersion: 2
+        x: 2386
+        y: 2674
+        width: 692
+        height: 375
+      alignment: 9
+      pivot: {x: 0.07680304, y: 0.8760078}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: front_forearm
+      rect:
+        serializedVersion: 2
+        x: 3569
+        y: 2591
+        width: 442
+        height: 517
+      alignment: 9
+      pivot: {x: 0.1564494, y: 0.21328022}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: front_thigh
+      rect:
+        serializedVersion: 2
+        x: 1698
+        y: 1658
+        width: 464
+        height: 910
+      alignment: 9
+      pivot: {x: 0.2974096, y: 0.8893571}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: back_forearm
+      rect:
+        serializedVersion: 2
+        x: 2558
+        y: 1896
+        width: 403
+        height: 530
+      alignment: 9
+      pivot: {x: 0.18600123, y: 0.1589185}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: front_bicep
+      rect:
+        serializedVersion: 2
+        x: 3396
+        y: 1821
+        width: 629
+        height: 477
+      alignment: 9
+      pivot: {x: 0.08039912, y: 0.8941377}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: back_leg
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 443
+        width: 405
+        height: 651
+      alignment: 9
+      pivot: {x: 0.6339055, y: 0.93318856}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: back_thigh
+      rect:
+        serializedVersion: 2
+        x: 995
+        y: 982
+        width: 384
+        height: 749
+      alignment: 9
+      pivot: {x: 0.67888993, y: 0.9585694}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: front_shin
+      rect:
+        serializedVersion: 2
+        x: 2497
+        y: 219
+        width: 407
+        height: 806
+      alignment: 9
+      pivot: {x: 0.2956861, y: 0.8812828}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: torso_front
+      rect:
+        serializedVersion: 2
+        x: 2929
+        y: 440
+        width: 1072
+        height: 1212
+      alignment: 9
+      pivot: {x: 0.57419777, y: 0.48806772}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: front_foot
+      rect:
+        serializedVersion: 2
+        x: 1682
+        y: 567
+        width: 495
+        height: 250
+      alignment: 9
+      pivot: {x: 0.28818506, y: 0.86154616}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: back_foot
+      rect:
+        serializedVersion: 2
+        x: 1106
+        y: 0
+        width: 485
+        height: 294
+      alignment: 9
+      pivot: {x: 0.32854483, y: 0.8566263}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    outline: []
+    physicsShape: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
