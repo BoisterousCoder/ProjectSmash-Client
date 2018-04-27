@@ -14,6 +14,9 @@ namespace Assets.Scripts.InputScripts
         private float jumpFrames = 50;
         private float distToGround;
         private bool isCrouching;
+        private bool isSpecialAttack = false;
+        private string attackDirection = "None";
+        private bool isWalking = false;
 
         private float previousHorizontal;
 
@@ -29,11 +32,13 @@ namespace Assets.Scripts.InputScripts
             collider = GetComponent<Collider>();
 
             distToGround = collider.bounds.extents.y;
+            animator.SetBool("IsWalking", false);
         }
 
         // Update is called once per frame
         void Update()
         {
+            
             Vector3 newVector = transform.localPosition;
             if (Input.GetAxis("Horizontal") > 0)
             {
@@ -41,16 +46,24 @@ namespace Assets.Scripts.InputScripts
                 if (Input.GetAxis("Horizontal") >= previousHorizontal)
                 {
                     newVector.x += runSpeed;
+                    if (!animator.GetBool("IsWalking"))
+                        animator.SetBool("IsWalking", true);
                 }
             }
-
-            if (Input.GetAxis("Horizontal") < 0)
+            else if (Input.GetAxis("Horizontal") < 0)
             {
                 transform.localRotation = Quaternion.Euler(0, 180, 0);
                 if (Input.GetAxis("Horizontal") <= previousHorizontal)
                 {
                     newVector.x -= runSpeed;
+                    if(!animator.GetBool("IsWalking"))
+                        animator.SetBool("IsWalking", true);
                 }
+            }
+            else
+            {
+                if (animator.GetBool("IsWalking"))
+                    animator.SetBool("IsWalking", false);
             }
 
             if(Input.GetAxis("Vertical") > 0)
