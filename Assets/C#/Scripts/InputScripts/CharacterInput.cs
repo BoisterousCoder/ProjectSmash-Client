@@ -9,7 +9,7 @@ namespace Assets.Scripts.InputScripts
     {
 
         public float runSpeed;
-        public float jumpSpeed;
+        public float jumpSpeed = 7;
         private float currentJumpPosition;
         private float jumpFrames = 50;
         private float distToGround;
@@ -22,12 +22,12 @@ namespace Assets.Scripts.InputScripts
         public KeyCode attackKey = KeyCode.LeftShift;
         public bool IsSpecialAttack {
             get {
-                return animator.GetBool("isSpecialAttack");
+                return animator.GetBool("IsSpecialAttack");
             }
             set
             {
                 if (IsWalking != value)
-                    animator.SetBool("isSpecialAttack", value);
+                    animator.SetBool("IsSpecialAttack", value);
             }
         }
         public AttackDirection AttackDir {
@@ -86,29 +86,38 @@ namespace Assets.Scripts.InputScripts
         void Update()
         {
             Vector3 charecterMovement = new Vector3();
-            if (Input.GetKey(rightKey) && !Input.GetKey(attackKey))
-            {
-                transform.localRotation = Quaternion.Euler(0, 0, 0);
-                charecterMovement.x = runSpeed;
-                IsWalking = true;
-            }
-            else if (Input.GetKey(leftKey) && !Input.GetKey(attackKey))
-            {
-                transform.localRotation = Quaternion.Euler(0, 180, 0);
-                charecterMovement.x = -runSpeed;
-                IsWalking = true;
-            }
-            else IsWalking = false;
 
-            if(Input.GetKey(upKey))
+            bool isAttacking = Input.GetKey(attackKey) || Input.GetKey(specialKey);
+            if (isAttacking)
             {
-                if (IsGrounded)
-                {
-                    rigidBody.AddForce(new Vector2(0, 7), ForceMode2D.Impulse);
-                    animator.SetBool("IsGrounded", false);
-                }
+                if (Input.GetKey(rightKey) || Input.GetKey(leftKey))
+                    AttackDir = AttackDirection.Side;
+                else if (Input.GetKey(upKey))
+                    AttackDir = AttackDirection.Up;
+                else if (Input.GetKey(downKey))
+                    AttackDir = AttackDirection.Down;
+                else
+                    AttackDir = AttackDirection.Neutral;
             }
+            else if (Input.GetKey(rightKey))
+            {
+                charecterMovement.x = runSpeed;
+            }
+            else if (Input.GetKey(leftKey))
+            {
+                charecterMovement.x = -runSpeed;
+            }else if(Input.GetKey(upKey) && IsGrounded)
+            {
+                rigidBody.AddForce(new Vector2(0, 7), ForceMode2D.Impulse);
+            }
+
+            if (!isAttacking) AttackDir = AttackDirection.Neutral;
+            if(Input.GetKey(rightKey)) transform.localRotation = Quaternion.Euler(0, 0, 0);
+            else if (Input.GetKey(leftKey)) transform.localRotation = Quaternion.Euler(0, 180, 0);
+
+            IsSpecialAttack = Input.GetKey(specialKey);
             IsGrounded = rigidBody.velocity.y == 0;
+            IsWalking = !(charecterMovement.Equals(new Vector3()));
             transform.localPosition += charecterMovement;
         }
     }
