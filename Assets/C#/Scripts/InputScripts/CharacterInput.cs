@@ -12,8 +12,8 @@ namespace Assets.Scripts.InputScripts
         public float jumpSpeed = 7;
         private float currentJumpPosition;
         private float jumpFrames = 50;
-        private float distToGround;
         private bool isCrouching = false;
+        private float groundedTolerance = (float) 0.5;
         public KeyCode leftKey = KeyCode.A;
         public KeyCode upKey = KeyCode.W;
         public KeyCode downKey = KeyCode.S;
@@ -76,9 +76,9 @@ namespace Assets.Scripts.InputScripts
             animator = GetComponent<Animator>();
             rigidBody = GetComponent<Rigidbody2D>();
             collider = GetComponent<Collider>();
-
-            distToGround = collider.bounds.extents.y;
+            
             IsWalking = false;
+            IsGrounded = true;
             AttackDir = AttackDirection.Neutral;
         }
 
@@ -116,9 +116,20 @@ namespace Assets.Scripts.InputScripts
             else if (Input.GetKey(leftKey)) transform.localRotation = Quaternion.Euler(0, 180, 0);
 
             IsSpecialAttack = Input.GetKey(specialKey);
-            IsGrounded = rigidBody.velocity.y == 0;
+            UpdateGrounded();
             IsWalking = !(charecterMovement.Equals(new Vector3()));
             transform.localPosition += charecterMovement;
+        }
+        void UpdateGrounded()
+        {
+            var floors = GameObject.FindGameObjectsWithTag("floor");
+            foreach (var floor in floors)
+                if (Vector2.Distance(floor.transform.position, gameObject.transform.position) < groundedTolerance)
+                {
+                    IsGrounded = true;
+                    return;
+                }
+            IsGrounded = false;
         }
     }
     public enum AttackDirection : int
