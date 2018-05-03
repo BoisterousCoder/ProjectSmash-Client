@@ -10,10 +10,7 @@ namespace Assets.Scripts.InputScripts
 
         public float runSpeed;
         public float jumpSpeed;
-        private float currentJumpPosition;
-        private float jumpFrames = 50;
         private float distToGround;
-        private bool isCrouching;
 
         private float previousHorizontal;
 

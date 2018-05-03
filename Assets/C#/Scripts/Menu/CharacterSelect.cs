@@ -11,55 +11,61 @@ namespace Assets.Scripts.Menu
 {
     public class CharacterSelect : MonoBehaviour
     {
-        Canvas mainCanvas;
+        List<Image> characterSelectBoxes;
+        List<Text> characterSelectBoxTexts;
+        List<Character> characterList;
 
         Button goToStageSelectButton;
 
-        Image player1;
-        Image player2;
-        Image player3;
-        Image player4;
-
-        Image player1Token;
-
         public static bool isPlayer1Selected = false;
+        public static bool isPlayer2Selected = false;
 
         public void Start()
         {
-            //string[] names = Input.GetJoystickNames();
-            mainCanvas = GameObject.Find("Canvas").GetComponent<Canvas>();
-            goToStageSelectButton = GameObject.Find("GoToStageSelect").GetComponent<Button>();
             
+            goToStageSelectButton = GameObject.Find("GoToStageSelect").GetComponent<Button>();
 
-            //TODO: Make the player selects fit the screen
-            player1 = GameObject.Find("Player1").GetComponent<Image>();
-            player2 = GameObject.Find("Player2").GetComponent<Image>();
-            player3 = GameObject.Find("Player3").GetComponent<Image>();
-            player4 = GameObject.Find("Player4").GetComponent<Image>();
-
-            player1Token = GameObject.Find("Player1Token").GetComponent<Image>();
-
+            SceneManager.LoadScene("CharacterThumbnails", LoadSceneMode.Additive);
 
             // Generate characters
-            List<Image> characterSelectBoxes = GameObject.FindGameObjectsWithTag("CharacterSelectBox").Select(x => x.GetComponent<Image>()).OrderBy(x => Convert.ToInt32(x.name.Replace("CharacterBox", ""))).ToList();
-            List<Text> characterSelectBoxTexts = GameObject.FindGameObjectsWithTag("CharacterSelectBoxText").Select(x => x.GetComponent<Text>()).OrderBy(x => Convert.ToInt32(x.name.Replace("CharacterBoxText", ""))).ToList();
-            for (int i = 0; i < characterSelectBoxes.Count; i++)
+            characterSelectBoxes = GameObject.FindGameObjectsWithTag("CharacterSelectBox").Select(x => x.GetComponent<Image>()).OrderBy(x => Convert.ToInt32(x.name.Replace("CharacterBox", ""))).ToList();
+            characterSelectBoxTexts = GameObject.FindGameObjectsWithTag("CharacterSelectBoxText").Select(x => x.GetComponent<Text>()).OrderBy(x => Convert.ToInt32(x.name.Replace("CharacterBoxText", ""))).ToList();
+
+            characterList = Character.GetAllCharacters();
+
+            for(int i = 0; i < characterSelectBoxes.Count; i++)
             {
-                Character currentCharacter = Character.GetCharacter((Enums.CharacterIds)(i + 1));
-                characterSelectBoxTexts[i].text = currentCharacter.Name.ToUpper();
-                
+                if (i >= characterList.Count)
+                {
+                    characterSelectBoxes[i].gameObject.SetActive(false);
+                    characterSelectBoxTexts[i].gameObject.SetActive(false);
+                }
+                else
+                {
+                    characterSelectBoxTexts[i].text = characterList[i].Name.ToUpper();
+                }
+                //characterList
             }
-
-            // SET POSITIONS OF PLAYER SELECTS
-
-
-
+            
+           
             goToStageSelectButton.gameObject.SetActive(false);
             goToStageSelectButton.onClick.AddListener(GoToStageSelect);
         }
 
         public void Update()
         {
+            Debug.Log(GameObject.Find(characterList[0].ThumbnailName));
+            for (int i = 0; i < characterList.Count; i++)
+            {
+                Vector3 newVector = characterSelectBoxes[i].transform.position;
+                newVector.z = characterList[i].ThumbnailObject.transform.position.z;
+                characterList[i].ThumbnailObject.transform.position = newVector;
+
+                float test = 0.4f;
+                //characterList[i].ThumbnailObject.transform.localScale = characterSelectBoxes[i].transform.localScale;
+                characterList[i].ThumbnailObject.transform.localScale = new Vector3(test, test, test);
+            }
+
             if (isPlayer1Selected)
             {
 

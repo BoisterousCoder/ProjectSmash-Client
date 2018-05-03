@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.GameController;
+using Stages;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,74 +10,90 @@ namespace Assets.Scripts.Menu
 {
     public class StageSelect : MonoBehaviour
     {
-
-        public static List<GameObject> previewStages;
+        List<Stage> allStages;
         Sprite selectedPreviewStage;
+        public static List<GameObject> previewStages;
 
-        Enums.StageIds selectedStage = Enums.StageIds.Stage1;
+        Enums.StageIds selectedStage = Enums.StageIds.LastStand;
         Text selectedStageName;
 
         public void Start()
         {
             //string[] names = Input.GetJoystickNames();
-
+            allStages = Stage.GetAllStages();
             previewStages = GameObject.FindGameObjectsWithTag("StageSelectPreview").OrderBy(x => Convert.ToInt32(x.name.Replace("StageSelectPreview", ""))).ToList();
+
+
+            for (int i = allStages.Count; i < previewStages.Count; i++)
+            {
+                previewStages[i].SetActive(false);
+                SpriteRenderer curSprite = previewStages[i].GetComponent<SpriteRenderer>();
+                //curSprite.sprite
+            }
             selectedPreviewStage = GameObject.Find("StageSelectPreviewSelected").GetComponent<Sprite>();
 
             selectedStageName = GameObject.Find("StageName").GetComponent<Text>();
+
+            //previewStages[0].
         }
 
         public void Update()
         {
-            if (Input.GetKeyDown(KeyCode.UpArrow))
+            #region Move selected 
+
+            if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
             {
-                int nextStageSelect = (int)selectedStage - (previewStages.Count / 2);
-                if (nextStageSelect >= 1 && nextStageSelect <= previewStages.Count)
+                if(allStages.Count > 4)
                 {
-                    selectedStage = (Enums.StageIds)nextStageSelect;
-                }
-            }
-            if (Input.GetKeyDown(KeyCode.DownArrow))
-            {
-                int nextStageSelect = (int)selectedStage + (previewStages.Count / 2);
-                if (nextStageSelect >= 1 && nextStageSelect <= previewStages.Count)
-                {
-                    selectedStage = (Enums.StageIds)nextStageSelect;
-                }
-            }
-            if (Input.GetKeyDown(KeyCode.LeftArrow))
-            {
-                if ((int)selectedStage != 1 && (int)selectedStage != previewStages.Count / 2 + 1)
-                {
-                    int nextStageSelect = (int)selectedStage - 1;
-                    if (nextStageSelect >= 1 && nextStageSelect <= previewStages.Count)
+                    int nextStageSelect = (int)selectedStage - (allStages.Count / 2);
+                    if (nextStageSelect >= 1 && nextStageSelect <= allStages.Count)
                     {
                         selectedStage = (Enums.StageIds)nextStageSelect;
                     }
                 }
             }
-            if (Input.GetKeyDown(KeyCode.RightArrow))
+            if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
             {
-                if((int)selectedStage != previewStages.Count / 2 && (int)selectedStage != previewStages.Count)
+
+                if (allStages.Count > 4)
                 {
-                    int nextStageSelect = (int)selectedStage + 1;
-                    if (nextStageSelect >= 1 && nextStageSelect <= previewStages.Count)
+                    int nextStageSelect = (int)selectedStage + (allStages.Count / 2);
+                    if (nextStageSelect >= 1 && nextStageSelect <= allStages.Count)
                     {
                         selectedStage = (Enums.StageIds)nextStageSelect;
                     }
                 }
             }
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
             {
-                if (selectedStage != Enums.StageIds.Undefined)
+                int nextStageSelect = (int)selectedStage - 1;
+                if (nextStageSelect >= 0 && nextStageSelect < allStages.Count)
                 {
-                    Master.StageId = selectedStage;
-                    GameManager.StartGame();
+                    selectedStage = (Enums.StageIds)nextStageSelect;
+                }
+            }
+            if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
+            {
+                int nextStageSelect = (int)selectedStage + 1;
+                if (nextStageSelect >= 0 && nextStageSelect < allStages.Count)
+                {
+                    selectedStage = (Enums.StageIds)nextStageSelect;
                 }
             }
 
-            Master.StageId = selectedStage;
-            selectedStageName.text = selectedStage.ToString();
+            #endregion
+
+            Master.Stage = Stage.GetStage(selectedStage);
+
+            selectedStageName.text = Master.Stage.Name;
+
+            if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return))
+            {
+                if (Master.Stage != null)
+                {
+                    GameManager.StartGame();
+                }
+            }
 
             //selectedPreviewStage. = previewStages[(int)selectedStage].rect.x;
 

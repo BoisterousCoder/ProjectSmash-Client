@@ -6,26 +6,32 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/StartScreen/Start Screen.unity
+    path: Assets/Menus/StartScreen/Start Screen.unity
     guid: 1408796ff78ae214882e02cc6fe0314f
   - enabled: 1
-    path: Assets/MainMenu/Main Menu.unity
+    path: Assets/Menus/MainMenu/Main Menu.unity
     guid: c4e1fc7a93e21094485420ca14b68a71
-  - enabled: 0
-    path: Assets/MainMenu/Lobby/Main Menu Server Connect.unity
-    guid: a421b1ec092e70846849f437a7108bb1
   - enabled: 1
-    path: Assets/MainMenu/Options/Main Menu Options.unity
+    path: Assets/Menus/MainMenu/Options/Main Menu Options.unity
     guid: 87f1ceb7322c39c4686b00afcc19a111
   - enabled: 1
-    path: Assets/CharacterSelect/Character Select.unity
+    path: Assets/Menus/CharacterSelect/Character Select.unity
     guid: 120353154d7955343bf42908d48bfe29
   - enabled: 1
-    path: Assets/StageSelect/Stage Select.unity
+    path: Assets/Menus/StageSelect/Stage Select.unity
     guid: 6d9a52d6676a3bd4b9bf1c78c9129d7f
+  - enabled: 1
+    path: Assets/Game/CharacterAssets/CharacterMaster.unity
+    guid: 544dc11e974aba746b3145629c757594
+  - enabled: 1
+    path: Assets/Game/CharacterAssets/CharacterThumbnails.unity
+    guid: 3c84ce97b8aad554286b206516593e57
   - enabled: 1
     path: Assets/Game/Stages/LastStand/LastStand.unity
     guid: dffefd626c03d7d44998b3cbbd0194b8
   - enabled: 1
-    path: Assets/Game/CharacterAssets/CharacterMaster.unity
-    guid: 544dc11e974aba746b3145629c757594
+    path: Assets/Game/Stages/SchoolFront/SchoolFront.unity
+    guid: fd63f92cacb3dcb4eb5aec81c1667a5b
+  - enabled: 1
+    path: Assets/Game/UI/PlayerOverlay.unity
+    guid: d07368785ac1f754ca81055b77b9e0f4

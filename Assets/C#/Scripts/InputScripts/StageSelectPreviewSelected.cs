@@ -18,9 +18,9 @@ namespace Assets.Scripts.InputScripts
         // Update is called once per frame
         void Update()
         {
-            if(Master.StageId != Enums.StageIds.Undefined && StageSelect.previewStages != null)
+            if(Master.Stage != null && StageSelect.previewStages != null)
             {
-                currentStagePreview = StageSelect.previewStages[(int)Master.StageId - 1];
+                currentStagePreview = StageSelect.previewStages[(int)Master.Stage.Id];
                 Vector3 newVector = new Vector3();
                 newVector.x = currentStagePreview.transform.position.x;
                 newVector.y = currentStagePreview.transform.position.y;
