@@ -12,6 +12,7 @@ namespace Assets.Scripts.Menu
     public class CharacterSelect : MonoBehaviour
     {
         List<Image> characterSelectBoxes;
+        List<Image> characterSelectBoxTitles;
         List<Text> characterSelectBoxTexts;
         List<Character> characterList;
 
@@ -29,6 +30,7 @@ namespace Assets.Scripts.Menu
 
             // Generate characters
             characterSelectBoxes = GameObject.FindGameObjectsWithTag("CharacterSelectBox").Select(x => x.GetComponent<Image>()).OrderBy(x => Convert.ToInt32(x.name.Replace("CharacterBox", ""))).ToList();
+            characterSelectBoxTitles = GameObject.FindGameObjectsWithTag("CharacterSelectBoxTitle").Select(x => x.GetComponent<Image>()).OrderBy(x => Convert.ToInt32(x.name.Replace("CharacterBoxTitle", ""))).ToList();
             characterSelectBoxTexts = GameObject.FindGameObjectsWithTag("CharacterSelectBoxText").Select(x => x.GetComponent<Text>()).OrderBy(x => Convert.ToInt32(x.name.Replace("CharacterBoxText", ""))).ToList();
 
             characterList = Character.GetAllCharacters();
@@ -38,6 +40,7 @@ namespace Assets.Scripts.Menu
                 if (i >= characterList.Count)
                 {
                     characterSelectBoxes[i].gameObject.SetActive(false);
+                    characterSelectBoxTitles[i].gameObject.SetActive(false);
                     characterSelectBoxTexts[i].gameObject.SetActive(false);
                 }
                 else
@@ -58,7 +61,7 @@ namespace Assets.Scripts.Menu
             for (int i = 0; i < characterList.Count; i++)
             {
                 Vector3 newVector = characterSelectBoxes[i].transform.position;
-                newVector.z = characterList[i].ThumbnailObject.transform.position.z;
+                newVector.z = 89.5f;
                 characterList[i].ThumbnailObject.transform.position = newVector;
 
                 float test = 0.4f;
