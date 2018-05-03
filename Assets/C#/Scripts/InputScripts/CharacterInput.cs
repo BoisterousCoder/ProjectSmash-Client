@@ -1,6 +1,6 @@
-﻿using System.Collections;
+﻿using UnityEngine;
+using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 using System;
 
 namespace Assets.Scripts.InputScripts
@@ -130,11 +130,19 @@ namespace Assets.Scripts.InputScripts
         {
             var floors = GameObject.FindGameObjectsWithTag("floor");
             foreach (var floor in floors)
-                if (Vector2.Distance(floor.transform.position, gameObject.transform.position) < groundedTolerance)
+            {
+                var points = floor.GetComponent<PolygonCollider2D>().points;
+                float closestDistance = Vector3.Distance(transform.position, points[0]);
+                foreach (var point in points)
+                    closestDistance = Math.Min(closestDistance,
+                        Vector3.Distance(transform.position, point));
+                if (closestDistance < groundedTolerance)
                 {
                     IsGrounded = true;
                     return;
                 }
+            }
+                
             IsGrounded = false;
         }
     }
