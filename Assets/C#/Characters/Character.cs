@@ -35,21 +35,6 @@ namespace Characters
             protected internal set { }
         }
 
-        public GameObject ThumbnailObject
-        {
-            get
-            {
-                GameObject retObject = GameObject.Find(ThumbnailName);
-                if(retObject == null)
-                {
-                    retObject = new GameObject();
-                }
-                return retObject;
-            }
-
-            protected internal set { }
-        }
-
         #endregion
 
         #region Methods

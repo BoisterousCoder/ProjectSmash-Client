@@ -25,7 +25,7 @@ namespace Assets.Scripts.GameController
             }
 
             SceneManager.LoadScene("CharacterMaster", LoadSceneMode.Additive);
-            SceneManager.LoadScene("CharacterThumbnails", LoadSceneMode.Additive);
+            //SceneManager.LoadScene("CharacterThumbnails", LoadSceneMode.Additive);
         }
     }
 }

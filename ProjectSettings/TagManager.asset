@@ -7,11 +7,11 @@ TagManager:
   - CharacterSelectBox
   - CharacterSelectBoxText
   - StageSelectPreview
-  - ServerConnectGameTitle
-  - ServerConnectPlayerCount
-  - ServerConnectJoinButton
   - floor
   - CharacterSelectBoxTitle
+  - PlayerCardTitle
+  - PlayerCard
+  - PlayerCardText
   layers:
   - Default
   - TransparentFX
@@ -21,6 +21,9 @@ TagManager:
   - UI
   - 
   - 
+  - CharacterSelectThumbnail
+  - CharacterSelectTitle
+  - CharacterSelectText
   - 
   - 
   - 
@@ -41,10 +44,7 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
-  - 
-  - 
+  - Overlap
   m_SortingLayers:
   - name: Default
     uniqueID: 0

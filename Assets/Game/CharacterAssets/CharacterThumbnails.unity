@@ -117,7 +117,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1119625693}
   - component: {fileID: 1119625692}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ShannonThumbnail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -188,7 +188,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1186776050}
   - component: {fileID: 1186776049}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: VonderEheThumbnail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -259,7 +259,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1860742457}
   - component: {fileID: 1860742456}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: TaylorThumbnail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -330,7 +330,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2029971609}
   - component: {fileID: 2029971608}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EricksonThumbnail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
