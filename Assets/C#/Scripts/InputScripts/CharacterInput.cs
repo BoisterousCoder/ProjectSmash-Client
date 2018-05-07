@@ -125,7 +125,6 @@ namespace Assets.Scripts.InputScripts
         }
         void Jump()
         {
-            Debug.Log("JUMP");
             rigidBody.AddForce(new Vector2(0, jumpSpeed), ForceMode2D.Impulse);
         }
         void SetAttackDir()
@@ -146,7 +145,6 @@ namespace Assets.Scripts.InputScripts
             foreach (var floor in floors)
             {
                 float closestDistance = floor.GetComponent<Collider2D>().Distance(collider2D).distance;
-                Debug.Log(closestDistance);
                 if (closestDistance < groundedTolerance) return true;
             }
                 
