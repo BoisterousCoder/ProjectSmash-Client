@@ -13,7 +13,7 @@ namespace Assets.Scripts.InputScripts
         private float currentJumpPosition;
         private float jumpFrames = 50;
         private bool isCrouching = false;
-        private float groundedTolerance = (float)0.5;
+        private float groundedTolerance = (float)2.5;
         public KeyCode leftKey = KeyCode.A;
         public KeyCode upKey = KeyCode.W;
         public KeyCode downKey = KeyCode.S;
@@ -90,43 +90,51 @@ namespace Assets.Scripts.InputScripts
         // Update is called once per frame
         void Update()
         {
-            Vector3 charecterMovement = new Vector3();
-
+            bool isWalkingInUpdate = false;
             bool isAttacking = Input.GetKey(attackKey) || Input.GetKey(specialKey);
+
             if (isAttacking)
-            {
-                if (Input.GetKey(rightKey) || Input.GetKey(leftKey))
-                    AttackDir = AttackDirection.Side;
-                else if (Input.GetKey(upKey))
-                    AttackDir = AttackDirection.Up;
-                else if (Input.GetKey(downKey))
-                    AttackDir = AttackDirection.Down;
-                else
-                    AttackDir = AttackDirection.Neutral;
-            }
+                SetAttackDir();
             else if (Input.GetKey(rightKey))
-            {
-                charecterMovement.x = runSpeed;
-            }
+                Move(MoveDirection.Right, out isWalkingInUpdate);
             else if (Input.GetKey(leftKey))
-            {
-                charecterMovement.x = -runSpeed;
-            }
+                Move(MoveDirection.Left, out isWalkingInUpdate);
             else if (Input.GetKey(upKey) && IsGrounded)
-            {
-                rigidBody.AddForce(new Vector2(0, 7), ForceMode2D.Impulse);
-            }
+                Jump();
 
             if (!isAttacking) AttackDir = AttackDirection.Neutral;
             if (Input.GetKey(rightKey)) transform.localRotation = Quaternion.Euler(0, 0, 0);
             else if (Input.GetKey(leftKey)) transform.localRotation = Quaternion.Euler(0, 180, 0);
 
             IsSpecialAttack = Input.GetKey(specialKey);
-            UpdateGrounded();
-            IsWalking = !(charecterMovement.Equals(new Vector3()));
-            transform.localPosition += charecterMovement;
+            IsWalking = isWalkingInUpdate;
+            IsGrounded = IsOnFloor();
         }
-        void UpdateGrounded()
+        void Move(MoveDirection direction)
+        {
+            transform.localPosition += new Vector3(runSpeed * (int) direction, 0);
+        }
+        void Move(MoveDirection direction, out bool isWalkingInUpdate)
+        {
+            Move(direction);
+            isWalkingInUpdate = true;
+        }
+        void Jump()
+        {
+            rigidBody.AddForce(new Vector2(0, jumpSpeed), ForceMode2D.Impulse);
+        }
+        void SetAttackDir()
+        {
+            if (Input.GetKey(rightKey) || Input.GetKey(leftKey))
+                AttackDir = AttackDirection.Side;
+            else if (Input.GetKey(upKey))
+                AttackDir = AttackDirection.Up;
+            else if (Input.GetKey(downKey))
+                AttackDir = AttackDirection.Down;
+            else
+                AttackDir = AttackDirection.Neutral;
+        }
+        bool IsOnFloor()
         {
             var floors = GameObject.FindGameObjectsWithTag("floor");
             foreach (var floor in floors)
@@ -136,14 +144,11 @@ namespace Assets.Scripts.InputScripts
                 foreach (var point in points)
                     closestDistance = Math.Min(closestDistance,
                         Vector3.Distance(transform.position, point));
-                if (closestDistance < groundedTolerance)
-                {
-                    IsGrounded = true;
-                    return;
-                }
+                Debug.Log(closestDistance);
+                if (closestDistance < groundedTolerance) return true;
             }
                 
-            IsGrounded = false;
+            return false;
         }
     }
     public enum AttackDirection : int
@@ -152,5 +157,10 @@ namespace Assets.Scripts.InputScripts
         Up = 1,
         Side = 2,
         Down = 3
+    }
+    enum MoveDirection : int
+    {
+        Left = -1,
+        Right = 1
     }
 }
