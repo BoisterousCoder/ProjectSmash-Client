@@ -9,10 +9,10 @@ namespace Assets.C_.Scripts.InputScripts
 {
     public class CharecterInput1 : CharacterInput
     {
-        //public new KeyCode leftKey = KeyCode.LeftArrow;
-        //public new KeyCode rightKey = KeyCode.RightArrow;
-        //public new KeyCode upKey = KeyCode.UpArrow;
-        //public new KeyCode attackKey = KeyCode.RightControl;
-        //public new KeyCode specialKey = KeyCode.RightAlt;
+        public new KeyCode leftKey = KeyCode.LeftArrow;
+        public new KeyCode rightKey = KeyCode.RightArrow;
+        public new KeyCode upKey = KeyCode.UpArrow;
+        public new KeyCode attackKey = KeyCode.RightControl;
+        public new KeyCode specialKey = KeyCode.RightAlt;
     }
 }
